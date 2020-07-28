@@ -314,7 +314,6 @@ public class WebhookLib {
 		EnvelopesApi envelopesApi = new EnvelopesApi();
 		EnvelopeSummary envelopeSummary;
 		try {
-			logger.debug(new JSON().serialize(envelopeDefinition));
 			envelopeSummary = envelopesApi.createEnvelope(dsAccountId, envelopeDefinition);
 			if (envelopeSummary == null || envelopeSummary.getEnvelopeId() == null) {
 				return "{\"ok\": false, \"html\": \"<h3>Problem</h3> \r\n  <p>Error calling DocuSign</p>\"}";
@@ -369,7 +368,7 @@ public class WebhookLib {
 		signHereTab.setRecipientId("1");
 		signHereTab.setName("Please sign here");
 		signHereTab.setOptional("false");
-		signHereTab.setScaleValue(1);
+		signHereTab.setScaleValue("1");
 		signHereTab.setTabLabel("signer1sig");
 		List<SignHere> signHereTabs = new ArrayList<>();
 		signHereTabs.add(signHereTab);
@@ -544,7 +543,7 @@ public class WebhookLib {
 			if (envelope == null || envelope.getEnvelopeId() == null) {
 				return "{\"ok\": false, \"html\": \"<h3>Problem</h3><p>Error calling DocuSign</p>\"}";
 			}
-			return new JSON().serialize(envelope);
+			return envelope.toString();
 		} catch (ApiException e) {
 			e.printStackTrace();
 		}
