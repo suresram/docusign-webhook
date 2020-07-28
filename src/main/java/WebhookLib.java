@@ -267,7 +267,7 @@ public class WebhookLib {
 		eventNotification.setRequireAcknowledgment("true");
 		eventNotification.setIncludeDocuments("true");
 		eventNotification.setEnvelopeEvents(envelopeEvents);
-		eventNotification.setIncludeHMAC("true");
+		
 
 		byte[] fileBytes = null;
 		try {
