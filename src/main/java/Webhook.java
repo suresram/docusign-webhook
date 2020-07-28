@@ -11,6 +11,8 @@ import static spark.Spark.*;
 
 public class Webhook {
 
+	final static Logger logger = LoggerFactory.getLogger(Webhook.class);
+	
 	public static void main(String[] args) {
 
 		port(Integer.valueOf(System.getenv("PORT")));
