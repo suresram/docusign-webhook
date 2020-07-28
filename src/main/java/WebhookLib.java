@@ -257,41 +257,17 @@ public class WebhookLib {
 		// and an eventNotification object which sets the parameters for
 		// webhook notifications to us from the DocuSign platform
 		EnvelopeEvent envelopeEvent = new EnvelopeEvent();
-		envelopeEvent.setEnvelopeEventStatusCode("sent");
-		envelopeEvent.setEnvelopeEventStatusCode("delivered");
 		envelopeEvent.setEnvelopeEventStatusCode("completed");
-		envelopeEvent.setEnvelopeEventStatusCode("declined");
-		envelopeEvent.setEnvelopeEventStatusCode("voided");
-		envelopeEvent.setEnvelopeEventStatusCode("sent");
-		envelopeEvent.setEnvelopeEventStatusCode("sent");
 		List<EnvelopeEvent> envelopeEvents = new ArrayList<>();
 		envelopeEvents.add(envelopeEvent);
-
-		RecipientEvent recipientEvent = new RecipientEvent();
-		recipientEvent.setRecipientEventStatusCode("Sent");
-		recipientEvent.setRecipientEventStatusCode("Delivered");
-		recipientEvent.setRecipientEventStatusCode("Completed");
-		recipientEvent.setRecipientEventStatusCode("Declined");
-		recipientEvent.setRecipientEventStatusCode("AuthenticationFailed");
-		recipientEvent.setRecipientEventStatusCode("AutoResponded");
-		List<RecipientEvent> recipientEvents = new ArrayList<>();
-		recipientEvents.add(recipientEvent);
 
 		EventNotification eventNotification = new EventNotification();
 		eventNotification.setUrl(webhookUrl);
 		eventNotification.setLoggingEnabled("true");
 		eventNotification.setRequireAcknowledgment("true");
-		eventNotification.setUseSoapInterface("false");
-		eventNotification.setIncludeCertificateWithSoap("false");
-		eventNotification.setSignMessageWithX509Cert("false");
 		eventNotification.setIncludeDocuments("true");
-		eventNotification.setIncludeEnvelopeVoidReason("true");
-		eventNotification.setIncludeTimeZone("true");
-		eventNotification.setIncludeSenderAccountAsCustomField("true");
-		eventNotification.setIncludeDocumentFields("true");
-		eventNotification.setIncludeCertificateOfCompletion("true");
 		eventNotification.setEnvelopeEvents(envelopeEvents);
-		eventNotification.setRecipientEvents(recipientEvents);
+		eventNotification.setIncludeHMAC("true");
 
 		byte[] fileBytes = null;
 		try {
