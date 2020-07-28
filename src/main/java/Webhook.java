@@ -21,7 +21,7 @@ public class Webhook {
 			if (op != null && op != "") {
 				switch (op) {
 				case "send1":
-					return doSend1(request.protocol() + "://" + request.host());
+					return doSend1("https://" + request.host());
 				case "status":
 					String envelopeId = request.queryParams("envelope_id");
 					return doStatus(envelopeId);
