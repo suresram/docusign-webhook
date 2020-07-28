@@ -4,7 +4,8 @@ import java.util.Map;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import static spark.Spark.*;
 
@@ -35,6 +36,7 @@ public class Webhook {
 		});
 
 		post("/", (request, response) -> {
+			logger.info("Headers: " + request.headers());
 			String op = request.queryParams("op");
 			if (op != null && op != "") {
 				switch (op) {
